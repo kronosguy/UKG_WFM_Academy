@@ -1,161 +1,98 @@
-# ukg-wfm-academy
+# UKG WFM Academy
 
-This repo is a **hands-on, operator-grade training universe for UKG Pro WFM + HRIS-adjacent work**.  
-Not theory. Not vibes. **Real patterns, real failure modes, real validation.**
+UKG is powerful. It is also unforgiving.  
+This repo is where that power becomes repeatable outcomes: **UKG Pro WFM, UKG Pro, UKG Ready, WFC, UTM**, and the full Kronos lineage.
 
-If you’ve ever said “UKG is powerful but messy” — this is the place where we turn that into **repeatable skill**.
-
----
-
-## What you’re getting
-- **Interactive learning paths** (do the work, prove the outcome)
-- **Field manual truth** (how it breaks, how to diagnose, how to recover)
-- **Blueprint patterns** (repeatable implementations you can reuse)
-- **Tooling + SDKs** (automation-ready utilities and helpers)
-- **Scenarios + grading** (end-to-end simulations with validation)
+This is hands-on training built for **HRIS / HRIT / Systems Admins** and anyone who has to make UKG behave in real life.
+You will learn how to design solutions when others see red tape, and how to prove what works even when someone says “you can’t.”
 
 ---
 
-## Choose your route (start here)
-Pick the lane that matches your intent today:
+## Folder guide (start here, no duplicates)
 
-- **I’m learning from zero → competent** → [cademy/](./academy)
-- **I’m operating production and need answers fast** → [ieldmanual/](./fieldmanual)
-- **I’m implementing or standardizing across markets** → [lueprints/](./blueprints)
-- **I’m automating and building utilities** → [	oolkit/](./toolkit)
-- **I’m building reusable API helpers** → [sdk/](./sdk)
-- **I want end-to-end simulations + proofs** → [scenarios/](./scenarios)
-- **I want standards/templates/snippets** → [docs/](./docs)
-- **I want operating cadence (runbooks, governance, routines)** → [operator-os/](./operator-os)
-- **I want validation/scoring rules** → [grader/](./grader)
-- **I want a scratchpad that won’t hurt anything** → [sandbox/](./sandbox)
+* **[academy/](academy/)**: Guided learning paths with exercises, checkpoints, and grading criteria.  
+  Best for: building skill from fundamentals to operator grade.
+
+* **[fieldmanual/](fieldmanual/)**: Production truth by domain: failure modes, diagnostics, recovery, rollback steps.  
+  Best for: running live environments and needing answers fast.
+
+* **[blueprints/](blueprints/)**: Implementation playbooks and repeatable patterns you can standardize across markets and entities.  
+  Best for: solution architecture and scalable delivery.
+
+* **[toolkit/](toolkit/)**: Runnable utilities that support manuals and blueprints.  
+  Best for: automation, audits, validation, and operational lift.
+
+* **[sdk/](sdk/)**: Reusable API helpers and client libraries (JavaScript and Python).  
+  Best for: building integrations and repeatable API workflows.
+
+* **[scenarios/](scenarios/)**: End-to-end simulations that mirror real operations and prove concepts in context.  
+  Best for: practice that looks like production.
+
+* **[grader/](grader/)**: Validation harness and scoring rules for exercises and scenarios.  
+  Best for: objective proof you did it right.
+
+* **[operator-os/](operator-os/)**: Governance cadence: checklists, runbooks, routines, operating rhythm.  
+  Best for: keeping environments clean and scalable over time.
+
+* **[docs/](docs/)**: Writing standards, templates, schemas, and reusable snippets.  
+  Best for: consistency, professionalism, and maintainability.
+
+* **[platform/](platform/)**: Delivery surface for a product-like experience (site, docs, app) once wired in.  
+  Best for: publishing and distribution.
+
+* **[sandbox/](sandbox/)**: Safe scratch space that will not hurt anything.  
+  Best for: experiments and throwaway work.
 
 ---
 
-## The map (what lives where)
-`	ext
-docs/         writing standards, templates, schemas, reusable snippets
-academy/      learning paths, levels, exercises, grading criteria
-platform/     delivery surface (site/docs/app) when you wire it in
+## Academy roadmap (the lessons that make this worth reading)
 
-fieldmanual/  operator-grade reference by topic (geofence, pay rules, audits, etc.)
-blueprints/   implementation playbooks + repeatable patterns
-toolkit/      runnable utilities that support manuals/blueprints
-sdk/          reusable client libraries/helpers (js + python)
+1. **UKG navigation and mental models**  
+   Build a system map: where configuration actually lives, what changes what, and what breaks downstream.
 
-scenarios/    simulations + walkthroughs validating concepts end-to-end
-grader/       scoring rules + validation harness for exercises
-operator-os/  checklists, runbooks, routines, governance cadence
-sandbox/      scratch space (safe to delete)
-The loop (how you actually level up)
+2. **Access control and device governance (WFC, UTM, mobile)**  
+   Lock down punches and high-risk access with enforceable control layers, not policy slides.
 
-You don’t “read” your way into mastery. You run the loop:
+3. **Geofence and location trust (UKG Pro WFM)**  
+   Design location strategies that survive VPNs, remote work exceptions, and messy real-world punch behavior.
 
-What is this?
+4. **Scheduling operations that scale**  
+   Patterns for zones, workload planning, early starts, edits after publish, and making reports stop lying.
 
-academy/ = guided progression (skills)
+5. **Pay rules and labor calculations**  
+   Understand how the engine evaluates time and exceptions, then standardize patterns that stay correct.
 
-fieldmanual/ = production truth (operations)
+6. **Audits, compliance, and recoverability**  
+   Build audit trails, validation gates, and rollback playbooks so production changes are defensible.
 
-blueprints/ = repeatable patterns (delivery)
+7. **APIs and automation (UKG Pro, UKG Pro WFM, UKG Ready)**  
+   Build utilities that pull, validate, and reconcile data, then turn repeatable workflows into tooling.
 
-toolkit/ + sdk/ = automation (execution)
+8. **Reporting patterns that executives actually trust**  
+   Normalize definitions, enforce data quality rules, and ship metrics that survive cross-market comparisons.
 
-scenarios/ + grader/ = proof (validation)
+9. **Simulation drills (scenarios + grader)**  
+   Run end-to-end cases: “what happened,” “why,” “how to fix,” and “how to prevent it,” with scoring.
 
-Quickstart (15 minutes, no wandering)
+---
 
-Do this in order:
+## Quickstart (15 minutes)
 
- Read the content standards → docs/README.md
+1. Read standards: **[docs/README.md](docs/README.md)**  
+2. Pick your lane: **[academy/README.md](academy/README.md)** or **[fieldmanual/README.md](fieldmanual/README.md)**  
+3. Start with a high-impact domain inside **fieldmanual/** (geofence, pay rules, audits, devices, mobile)
 
- Pick your lane:
+---
 
- Learning path → academy/README.md
+## Repo rules
 
- Operator reference → fieldmanual/README.md
+No real production data. Use synthetic or redacted examples only.  
+Keep build artifacts out of git: node_modules, .next, dist, build, .turbo, etc.  
+If you change behavior, document the decision and the reason.  
+Every operational doc includes rollback steps.
 
- Start with a high-impact domain (pick one):
+---
 
- Geofence → fieldmanual/01-geofence/
+## Start here
 
- Pay rules → fieldmanual/05-payrules/
-
- Audit → fieldmanual/22-audit/
-
- Devices/Mobile control → fieldmanual/23-devices/
- / fieldmanual/24-mobile/
-
-Interactive standards (click to expand)
-<details> <summary><strong>What every topic folder must contain</strong></summary>
-
-Minimum
-
-README.md with: scope, key decisions, and why it matters
-
-Do / Don’t
-
-Diagnostics: what to check first (fast triage)
-
-Failure modes: how it breaks + how it presents
-
-Recovery: safe rollback steps (no gambling)
-
-Links to supporting toolkit scripts (if applicable)
-
-Optional
-
-diagrams
-
-sample configs / redacted examples
-
-validation checklist
-
-decision tree
-
-</details> <details> <summary><strong>Where runnable things go (so this stays clean)</strong></summary>
-
-If it runs (script/automation/utility): toolkit/
-
-If it’s a library/client (reusable code): sdk/
-
-If it’s a repeatable delivery pattern: blueprints/
-
-If it’s operator truth: fieldmanual/
-
-If it’s guided learning: academy/
-
-</details> <details> <summary><strong>What this repo is NOT</strong></summary>
-
-Not a dumping ground for random notes
-
-Not a place for real production data (ever)
-
-Not a graveyard of half-finished experiments (sandbox exists for that)
-
-</details>
-Repo rules (keep it professional, keep it scalable)
-
-No real production data. Use synthetic or redacted examples only.
-
-Keep build artifacts out of git (node_modules, .next, dist, build, .turbo, etc.).
-
-If you change behavior, document the decision + the reason.
-
-Every operational doc needs rollback steps.
-
-What’s coming next (the prequel)
-
-This repo is the foundation for:
-
-richer learning paths (levels, checkpoints, validations)
-
-tooling that turns field knowledge into automation
-
-scenario simulations that mirror real-world operations
-
-a platform experience that makes this feel like a product
-
-Start here (one link)
-
-➡️ docs/README.md
+➡️ **[docs/README.md](docs/README.md)**
