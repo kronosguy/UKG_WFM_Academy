@@ -1,0 +1,32 @@
+name: platform-build
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build platform if present
+        run: |
+          if [ -f "platform/package.json" ]; then
+            cd platform
+            npm ci
+            if npm run | grep -q " build"; then
+              npm run build
+            else
+              echo "No build script found in platform/package.json; skipping."
+            fi
+          else
+            echo "platform/package.json not found; skipping."
+          fi
