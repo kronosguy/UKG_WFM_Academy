@@ -1,0 +1,33 @@
+ProgressBar:
+  height: 8px
+  background: "#e2e8f0"
+  fill: "#0ea5e9"
+  border_radius: 4px
+  animation: "smooth transition 0.3s"
+
+SkillLadder:
+  levels:
+    - "Novice (0-25%)"
+    - "Apprentice (26-50%)"
+    - "Practitioner (51-75%)"
+    - "Operator (76-90%)"
+    - "Expert (91-100%)"
+  
+  visualization: "vertical ladder with icons"
+  color_coding:
+    novice: "#94a3b8"
+    apprentice: "#22c55e"
+    practitioner: "#0ea5e9"
+    operator: "#f59e0b"
+    expert: "#ef4444"
+
+CompletionBadges:
+  types:
+    - "Module Complete"
+    - "Track Complete"
+    - "Scenario Master"
+    - "Automation Expert"
+    - "Certified Operator"
+  
+  display: "grid of badge icons"
+  hover_effect: "tooltip with description"

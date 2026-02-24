@@ -1,0 +1,39 @@
+Header:
+  height: 64px
+  background: "#0f172a"
+  logo: 
+    position: left
+    size: "140px x 40px"
+  navigation:
+    items:
+      - "Academy"
+      - "Labs"
+      - "Reference"
+      - "Community"
+    style: "horizontal, white text, hover:sky-400"
+  user_menu:
+    position: right
+    items:
+      - "Profile"
+      - "Progress"
+      - "Settings"
+      - "Sign Out"
+
+Sidebar:
+  width: 280px
+  collapsible: true
+  background: "#f8fafc"
+  border_right: "#e2e8f0"
+  levels: 3
+  behavior: "persistent across pages"
+  
+  Structure:
+    Level 1: Modules (M00-M12, M-PLATFORM)
+    Level 2: Artifact Types (Lesson, Exercise, Lab, Runbook, Scenario)
+    Level 3: Individual Items
+    
+  Features:
+    - Search within sidebar
+    - Expand/collapse all
+    - Progress indicators
+    - Completion checkmarks

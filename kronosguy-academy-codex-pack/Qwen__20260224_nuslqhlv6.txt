@@ -1,0 +1,39 @@
+
+### UKG Knowledge Base Template
+
+```mdx
+---
+id: "ukg-help-timekeeping"
+title: "Timekeeping System Overview"
+description: "Complete guide to UKG time collection and tracking"
+category: "UKG"
+order: 1
+difficulty: "Intermediate"
+estimatedTime: "30 minutes"
+tags: ["timekeeping", "wfc", "devices"]
+version: "1.0"
+last-reviewed: "2026-02-01"
+---
+
+# Timekeeping System Overview
+
+## Definition
+[What timekeeping is in UKG...]
+
+## Key Components
+- Time clocks
+- Mobile punching
+- Web time entry
+- Badge readers
+
+## Common Failure Modes
+1. Device trust mismatches
+2. Network latency
+3. Configuration drift
+
+## Operator Guidance
+[Practical recommendations...]
+
+## Related Modules
+- [M03 Time Collection](/academy/modules/m03)
+- [Device Object](/docs/ukg/data-dictionary/device-object)

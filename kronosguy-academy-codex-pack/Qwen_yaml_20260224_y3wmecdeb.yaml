@@ -1,0 +1,7 @@
+prerequisites: ["module-id-1", "module-id-2"]
+objectives: ["Objective 1", "Objective 2"]
+resources: ["Link 1", "Link 2"]
+artifact: "Lesson|Exercise|Lab|Runbook|Scenario"
+module: "M00 Orientation"
+effort: 1
+status: "draft|review|published|archived"

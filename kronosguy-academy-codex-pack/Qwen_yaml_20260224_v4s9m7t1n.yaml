@@ -1,0 +1,25 @@
+Callout:
+  types:
+    info:
+      background: "#f0f9ff"    # sky-50
+      border_left: "4px solid #0ea5e9"
+      icon: "ℹ️"
+    
+    tip:
+      background: "#f0fdf4"    # green-50
+      border_left: "4px solid #22c55e"
+      icon: "💡"
+    
+    warning:
+      background: "#fffbeb"    # amber-50
+      border_left: "4px solid #f59e0b"
+      icon: "⚠️"
+    
+    danger:
+      background: "#fef2f2"    # red-50
+      border_left: "4px solid #ef4444"
+      icon: "🚨"
+  
+  padding: "1rem 1.5rem"
+  border_radius: "4px"
+  margin: "1.5rem 0"

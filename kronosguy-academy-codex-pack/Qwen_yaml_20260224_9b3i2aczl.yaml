@@ -1,0 +1,21 @@
+layout:
+  max-width: "1280px"
+  sidebar-width: "280px"
+  content-padding: "2rem"
+  mobile-breakpoint: "768px"
+  
+  header:
+    height: "64px"
+    position: "fixed"
+    z-index: "1000"
+  
+  footer:
+    height: "auto"
+    padding: "2rem"
+    background: "#0f172a"
+    color: "#ffffff"
+  
+  grid:
+    columns: "12"
+    gap: "1.5rem"
+    container-padding: "1rem"

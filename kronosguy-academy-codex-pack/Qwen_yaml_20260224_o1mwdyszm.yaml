@@ -1,0 +1,38 @@
+Documentation-Structure:
+  platform:
+    - "How KronosGuy Works"
+    - "Navigation"
+    - "Projects & Roadmaps"
+    - "Labs Engine"
+    - "Grading Engine"
+    - "Automation Engine"
+    - "Contribution Model"
+  
+  academy:
+    - "Learning Model"
+    - "Module Structure"
+    - "Artifact Types"
+    - "Skill Ladder"
+    - "Certification Framework"
+    - "Capstone Framework"
+    - "Progress Tracking"
+  
+  ukg:
+    help:
+      - "Timekeeping"
+      - "Scheduling"
+      - "Mobile & Geofence"
+      - "Pay Rules"
+      - "Compliance"
+    data-dictionary:
+      - "Person Object"
+      - "Timecard Object"
+      - "Schedule Object"
+      - "Pay Rule Object"
+      - "Device Object"
+    apis:
+      - "Authentication"
+      - "Effective Dating"
+      - "Pagination"
+      - "Rate Limits"
+      - "Integration Patterns"

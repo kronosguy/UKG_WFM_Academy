@@ -1,0 +1,36 @@
+Progress-Tracking:
+  metrics:
+    - "Module completion %"
+    - "Artifact completion count"
+    - "Time spent per module"
+    - "Exercise success rate"
+    - "Lab validation passes"
+    - "Scenario scores"
+  
+  visualization:
+    - "Progress bars per module"
+    - "Skill ladder position"
+    - "Track completion roadmap"
+    - "Achievement badges"
+    - "Leaderboard (opt-in)"
+  
+  persistence:
+    database: "PostgreSQL"
+    sync: "real-time"
+    backup: "daily"
+
+Skill-Ladder:
+  levels:
+    - "Novice (0-25%)"
+    - "Apprentice (26-50%)"
+    - "Practitioner (51-75%)"
+    - "Operator (76-90%)"
+    - "Expert (91-100%)"
+  
+  visualization: "vertical ladder with icons"
+  color_coding:
+    novice: "#94a3b8"
+    apprentice: "#22c55e"
+    practitioner: "#0ea5e9"
+    operator: "#f59e0b"
+    expert: "#ef4444"

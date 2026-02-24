@@ -1,0 +1,17 @@
+
+---
+
+## 📄 File 2: `LMS_ARCHITECTURE.md`
+
+```markdown
+# KronosGuy Academy — LMS Architecture Specification
+
+**Combining DataCamp + iximiuz Labs + CelestialDocs**  
+**Target:** kronosguy.com/academy  
+**Version:** 1.0.0  
+
+---
+
+## 🎓 Learning Management System Design
+
+### Three-Layer Architecture

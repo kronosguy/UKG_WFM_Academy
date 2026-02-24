@@ -1,0 +1,46 @@
+LessonCard:
+  layout: "horizontal card"
+  padding: "1.5rem"
+  background: "#ffffff"
+  border: "1px solid #e2e8f0"
+  border_radius: "8px"
+  shadow: "sm, hover:md"
+  
+  elements:
+    - Icon (artifact type)
+    - Title (bold, 18px)
+    - Description (muted, 14px)
+    - Duration badge
+    - Difficulty indicator
+    - Progress bar (if started)
+    - Completion checkbox
+  
+  hover_effect: "lift 4px, shadow increase"
+
+ModuleCard:
+  layout: "vertical card"
+  width: "320px"
+  height: "auto"
+  
+  header:
+    background: "gradient(primary to accent)"
+    padding: "1.5rem"
+    content:
+      - Module code (M00, M01, etc.)
+      - Module title
+      - Total items count
+  
+  body:
+    padding: "1.5rem"
+    content:
+      - Description
+      - Skill level
+      - Estimated time
+      - Prerequisites (if any)
+  
+  footer:
+    padding: "1rem 1.5rem"
+    border_top: "1px solid #e2e8f0"
+    content:
+      - Progress percentage
+      - "Continue" or "Start" button

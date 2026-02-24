@@ -1,0 +1,33 @@
+# .github/workflows/build-catalog.yml
+name: build-catalog
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "academy/**"
+      - "labs/**"
+      - "reference/**"
+
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      
+      - run: python scripts/build_catalog.py
+      
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add docs/CATALOG.md
+          if ! git diff --cached --quiet; then
+            git commit -m "docs: update catalog"
+            git push
+          fi

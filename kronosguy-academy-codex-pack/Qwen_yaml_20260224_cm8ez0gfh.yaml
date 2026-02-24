@@ -1,0 +1,16 @@
+responsive:
+  approach: "mobile-first"
+  
+  breakpoints:
+    sm: "640px"
+    md: "768px"
+    lg: "1024px"
+    xl: "1280px"
+    2xl: "1536px"
+  
+  mobile-optimizations:
+    - "Collapsible sidebar"
+    - "Hamburger menu"
+    - "Touch-friendly buttons (44px min)"
+    - "Reduced animations"
+    - "Optimized images"

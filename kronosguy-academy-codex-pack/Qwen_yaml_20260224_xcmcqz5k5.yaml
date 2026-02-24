@@ -1,0 +1,39 @@
+Certified-UKG-Operator:
+  track: "HRIS/HRIT Systems Administrator"
+  modules: [M00, M01, M02, M03, M06, M08, M09]
+  requirements:
+    - "Complete all modules"
+    - "Pass 3 capstone scenarios (80%+)"
+    - "Submit 1 automation utility"
+  validity: "2 years"
+  badge: "Certified UKG Operator"
+
+WFM-Operations-Specialist:
+  track: "WFM Operations Lead"
+  modules: [M00, M01, M05, M06, M07, M08, M09]
+  requirements:
+    - "Complete all modules"
+    - "Pass 4 capstone scenarios (80%+)"
+    - "Build 2 scheduling blueprints"
+  validity: "2 years"
+  badge: "WFM Operations Specialist"
+
+UKG-Solution-Architect:
+  track: "Solution Architect"
+  modules: [M00, M01, M02, M05, M07, M09, M10, M-PLATFORM]
+  requirements:
+    - "Complete all modules"
+    - "Design 3 implementation blueprints"
+    - "Pass enterprise capstone"
+  validity: "3 years"
+  badge: "UKG Solution Architect"
+
+UKG-Automation-Specialist:
+  track: "Automation Engineer"
+  modules: [M00, M01, M10, M11, M12, M-PLATFORM]
+  requirements:
+    - "Complete all modules"
+    - "Build 5 automation utilities"
+    - "Contribute to SDK"
+  validity: "2 years"
+  badge: "UKG Automation Specialist"

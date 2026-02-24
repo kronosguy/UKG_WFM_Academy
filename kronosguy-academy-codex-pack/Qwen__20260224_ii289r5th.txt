@@ -1,0 +1,15 @@
+
+---
+
+## 📄 File 6: `CONTENT_TAXONOMY.md`
+
+```markdown
+# KronosGuy Academy — Content Taxonomy Specification
+
+**All Content Structure | Templates | Metadata**  
+**Target:** kronosguy.com/academy  
+**Version:** 1.0.0  
+
+---
+
+## 📚 Content Domains

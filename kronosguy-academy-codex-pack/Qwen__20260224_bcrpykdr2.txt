@@ -1,0 +1,35 @@
+
+---
+
+## 📄 File 5: `DEPLOYMENT_CONFIG.md`
+
+```markdown
+# KronosGuy Academy — Deployment Configuration
+
+**Full-Auto Deployment | Vercel | GitHub Pages**  
+**Target:** kronosguy.com/academy  
+**Version:** 1.0.0  
+
+---
+
+## 🚀 Deployment Options
+
+### Option 1: GitHub Pages (Recommended - Fully Automated)
+
+```yaml
+Status: Pre-configured
+Time: <5 minutes
+Cost: Free
+Command: git push origin main
+
+GitHub Actions automatically:
+  1. Runs tests and linting
+  2. Builds the site
+  3. Deploys to GitHub Pages
+  4. Available at https://kronosguy.com/academy (via DNS)
+
+Monitor deployment:
+  - Go to GitHub repo
+  - Click "Actions" tab
+  - View workflow status
+  - Check "Deployments" for history

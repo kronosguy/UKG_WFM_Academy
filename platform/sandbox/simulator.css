@@ -1,0 +1,253 @@
+/* UKG PRO WFM SOVEREIGN SIMULATOR CSS - HIGH-FIDELITY RESTORED v3.1 */
+:root {
+    --ukg-header-bg: #222222;
+    --ukg-teal: #007377;
+    --ukg-teal-dark: #005151;
+    --ukg-nav-bg: #333333;
+    --ukg-body-bg: #F4F4F4;
+    --ukg-text-primary: #333333;
+    --ukg-text-secondary: #666666;
+    --ukg-border: #D1D1D1;
+    --ukg-tab-bar-bg: #EAEAEA;
+    --ukg-white: #FFFFFF;
+    --ukg-radius: 4px;
+    --font-standard: 'Segoe UI', 'Lato', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--ukg-body-bg);
+    color: var(--ukg-text-primary);
+    font-family: var(--font-standard);
+    font-size: 13px;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* TOP BANNER */
+.ukg-banner {
+    height: 48px;
+    background: var(--ukg-header-bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    color: white;
+    z-index: 1001;
+}
+
+.ukg-logo-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ukg-logo-text {
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+.ukg-banner-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.ukg-icon {
+    width: 20px !important;
+    height: 20px !important;
+    fill: white;
+    display: block;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    background: var(--ukg-teal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+/* WORKSPACE LAYOUT */
+.ukg-shell {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.ukg-main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.ukg-rail {
+    width: 54px;
+    background: var(--ukg-nav-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+    gap: 25px;
+}
+
+.rail-item {
+    width: 24px;
+    height: 24px;
+    opacity: 0.7;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rail-item.active,
+.rail-item:hover {
+    opacity: 1;
+    border-left: 3px solid var(--ukg-teal);
+    padding-left: 20px;
+    margin-left: -24px;
+}
+
+.ukg-workspace {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.ukg-tab-strip {
+    height: 36px;
+    background: var(--ukg-tab-bar-bg);
+    border-bottom: 1px solid var(--ukg-border);
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    gap: 2px;
+}
+
+.ukg-tab {
+    height: 30px;
+    padding: 0 15px;
+    background: #DDD;
+    border: 1px solid var(--ukg-border);
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    border-radius: 4px 4px 0 0;
+    cursor: pointer;
+    color: var(--ukg-text-secondary);
+}
+
+.ukg-tab.active {
+    background: var(--ukg-white);
+    color: var(--ukg-teal);
+    font-weight: 600;
+    border-top: 2px solid var(--ukg-teal);
+}
+
+/* ACTION RIBBON */
+.ukg-action-bar {
+    height: 48px;
+    background: var(--ukg-white);
+    border-bottom: 1px solid var(--ukg-border);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 24px;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ukg-teal);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    color: var(--ukg-teal-dark);
+}
+
+/* CONTENT AREA */
+.ukg-viewport {
+    padding: 24px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.ukg-card {
+    background: var(--ukg-white);
+    border: 1px solid var(--ukg-border);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 24px;
+    border-radius: var(--ukg-radius);
+}
+
+.ukg-card-head {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--ukg-border);
+    background: #F9F9F9;
+    font-weight: 600;
+    color: var(--ukg-teal);
+}
+
+.ukg-card-body {
+    padding: 20px;
+}
+
+/* FORMS */
+.ukg-input-group {
+    margin-bottom: 16px;
+}
+
+.ukg-label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #555;
+}
+
+.ukg-input,
+.ukg-select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--ukg-border);
+    border-radius: var(--ukg-radius);
+    font-family: inherit;
+}
+
+.ukg-input:focus,
+.ukg-select:focus {
+    border-color: var(--ukg-teal);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 115, 119, 0.1);
+}
+
+/* DIAGNOSTICS (Sovereign Layer) */
+.preview-box {
+    background: #1e1e1e;
+    color: #00FF00;
+    font-family: 'Consolas', monospace;
+    padding: 15px;
+    border-radius: var(--ukg-radius);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+#config-preview {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+}

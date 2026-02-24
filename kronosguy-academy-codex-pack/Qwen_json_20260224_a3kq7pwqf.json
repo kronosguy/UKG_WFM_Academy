@@ -1,0 +1,39 @@
+{
+  "name": "kronosguy-academy",
+  "scope": "kronosguy",
+  "framework": "nextjs",
+  "buildCommand": "cd platform && npm run build",
+  "outputDirectory": "platform/.next",
+  "installCommand": "cd platform && npm install",
+  
+  "env": {
+    "NEXT_PUBLIC_SITE_URL": "https://kronosguy.com/academy",
+    "NEXT_PUBLIC_GITHUB_OWNER": "kronosguy",
+    "NEXT_PUBLIC_GITHUB_REPO": "ukg-wfm-academy",
+    "GITHUB_TOKEN": "@github-token",
+    "DATABASE_URL": "@database-url",
+    "REDIS_URL": "@redis-url"
+  },
+  
+  "regions": ["iad1"],
+  
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ]
+}

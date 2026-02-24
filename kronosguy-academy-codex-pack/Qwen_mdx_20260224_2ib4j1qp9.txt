@@ -1,0 +1,31 @@
+---
+id: "m00-lesson-01"
+title: "Orientation: The Operator Mindset"
+module: "M00 Orientation"
+artifact: "Lesson"
+area: "academy"
+status: "published"
+effort: 1
+duration: "15 min"
+objectives:
+  - "Understand operator-grade thinking"
+  - "Map the UKG risk triangle"
+  - "Build your personal runbook"
+prerequisites: []
+tags: ["foundation", "mindset"]
+version: "1.0"
+last-reviewed: "2026-02-01"
+---
+
+## What This Is
+[Conceptual explanation...]
+
+## Why It Matters
+[Operational impact...]
+
+## How It Works
+[System mechanics...]
+
+## Hands-On: Build Your Runbook
+```bash
+ukg-cli runbook init --module M00

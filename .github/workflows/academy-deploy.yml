@@ -1,0 +1,30 @@
+name: Academy Full-Auto Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Validate Markdown & Schemas
+        run: |
+          echo "Validating academy content..."
+          # Placeholder for markdown linting/schema checks
+
+      - name: Sync to kronosguy.com
+        run: |
+          echo "Deploying to kronosguy.com/academy..."
+          # This would typically use SSH/RSYNC or an API call to the web server
+          # Full-auto mode: No manual intervention required.
+          
+      - name: Update GitHub Project
+        run: |
+          echo "Updating Roadmap..."
+          # logic to move items to 'Done' in GitHub Projects

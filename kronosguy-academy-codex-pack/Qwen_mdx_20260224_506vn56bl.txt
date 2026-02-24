@@ -1,0 +1,32 @@
+---
+id: "platform-getting-started"
+title: "Getting Started with KronosGuy"
+description: "Learn how to navigate and use the KronosGuy platform"
+category: "Platform"
+order: 1
+difficulty: "Beginner"
+estimatedTime: "20 minutes"
+tags: ["onboarding", "navigation", "basics"]
+version: "1.0"
+last-reviewed: "2026-02-01"
+---
+
+# Getting Started with KronosGuy
+
+## What This Is
+[Platform introduction...]
+
+## Why It Matters
+[Operational impact...]
+
+## How It Works
+[System mechanics...]
+
+## Quick Start
+1. Step one
+2. Step two
+3. Step three
+
+## Related Resources
+- [Platform Features](/docs/platform/features)
+- [Account Management](/docs/platform/account)

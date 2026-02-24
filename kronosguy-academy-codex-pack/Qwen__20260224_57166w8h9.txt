@@ -1,0 +1,52 @@
+academy/
+├── content/
+│   ├── platform/
+│   │   ├── 01-getting-started.md
+│   │   ├── 02-features.md
+│   │   └── 03-account-management.md
+│   ├── academy/
+│   │   ├── 01-courses-overview.md
+│   │   └── 02-assessments-and-labs.md
+│   └── knowledge-base/
+│       ├── 01-system-overview.md
+│       └── 02-api-reference.md
+│
+├── components/
+│   └── layout/
+│       ├── RootLayout.tsx
+│       ├── Navigation.tsx
+│       ├── Sidebar.tsx
+│       └── Footer.tsx
+│
+├── pages/
+│   └── index.tsx
+│
+├── styles/
+│   ├── layout.module.css
+│   ├── navigation.module.css
+│   ├── sidebar.module.css
+│   ├── footer.module.css
+│   └── home.module.css
+│
+├── lib/
+│   ├── mdx/mdx-utils.ts
+│   └── navigation/nav-builder.ts
+│
+├── scripts/
+│   ├── generate-sitemap.js
+│   ├── generate-robots.js
+│   └── generate-nav.js
+│
+├── .github/workflows/
+│   └── build-and-deploy.yml
+│
+├── public/
+│   ├── metadata.json
+│   ├── sitemap.xml
+│   └── robots.txt
+│
+├── next.config.js
+├── tailwind.config.js
+├── tsconfig.json
+├── postcss.config.js
+└── package.json

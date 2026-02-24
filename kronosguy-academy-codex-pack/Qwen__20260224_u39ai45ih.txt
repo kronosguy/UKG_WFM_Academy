@@ -1,0 +1,35 @@
+
+### Lab Template
+
+```mdx
+---
+id: "m04-lab-01"
+title: "Geofence Strategy: Circles vs Polygons"
+module: "M04 Mobile + Geofence"
+artifact: "Lab"
+area: "academy"
+status: "published"
+effort: 2
+duration: "45 min"
+environment: "ukg-sandbox-v2"
+resources:
+  - "Synthetic employee dataset (100 records)"
+  - "Mock mobile punch API"
+  - "Geofence validator utility"
+objectives:
+  - "Configure circle-based geofence for remote workers"
+  - "Implement polygon geofence for multi-site facilities"
+  - "Validate location trust with test punch scenarios"
+prerequisites:
+  - "Complete M04 Lesson 01-03"
+  - "Access to /labs/sandbox"
+tags: ["geofence", "mobile", "location-trust"]
+---
+
+## Objective
+Design and validate a geofence strategy that survives real-world edge cases.
+
+## Environment Setup
+```bash
+# Launch sandbox (auto-provisioned)
+ukg-lab start m04-geofence --ttl 2h

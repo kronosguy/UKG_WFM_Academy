@@ -1,0 +1,164 @@
+ukg-wfm-academy/
+├── .github/
+│   ├── workflows/
+│   │   ├── ci-markdown.yml
+│   │   ├── ci-links.yml
+│   │   ├── build-catalog.yml
+│   │   ├── validate-grader.yml
+│   │   ├── scaffold-content.yml
+│   │   └── platform-build.yml
+│   └── ISSUE_TEMPLATE/
+│       ├── lesson.md
+│       ├── exercise.md
+│       ├── lab.md
+│       ├── runbook.md
+│       └── scenario.md
+│
+├── academy/
+│   ├── README.md
+│   ├── tracks/
+│   │   ├── hr-systems-admin.md
+│   │   ├── wfm-operations.md
+│   │   ├── solution-architect.md
+│   │   └── automation-engineer.md
+│   ├── modules/
+│   │   ├── M00-orientation/
+│   │   ├── M01-platform-mental-model/
+│   │   ├── M02-identity-access/
+│   │   ├── M03-time-collection/
+│   │   ├── M04-mobile-geofence/
+│   │   ├── M05-scheduling-ops/
+│   │   ├── M06-timecard-exceptions/
+│   │   ├── M07-pay-rules/
+│   │   ├── M08-compliance/
+│   │   ├── M09-reporting/
+│   │   ├── M10-apis-integration/
+│   │   ├── M11-tooling-automation/
+│   │   ├── M12-scenarios-proof/
+│   │   └── M-PLATFORM-governance/
+│   └── progress/
+│       └── tracking-system.md
+│
+├── labs/
+│   ├── README.md
+│   ├── sandbox/
+│   │   └── ephemeral-environments.md
+│   ├── scenarios/
+│   │   ├── geofence-chaos-week/
+│   │   ├── pay-rule-regression/
+│   │   ├── schedule-mismatch/
+│   │   └── audit-recovery/
+│   └── grader/
+│       ├── validation-engine.md
+│       └── scoring-rules.md
+│
+├── reference/
+│   ├── README.md
+│   ├── platform/
+│   │   ├── how-kronosguy-works.md
+│   │   └── contribution-guide.md
+│   ├── academy/
+│   │   ├── learning-model.md
+│   │   └── certification-framework.md
+│   └── ukg/
+│       ├── help/
+│       │   ├── timekeeping.md
+│       │   ├── scheduling.md
+│       │   ├── mobile-geofence.md
+│       │   ├── pay-rules.md
+│       │   └── compliance.md
+│       ├── data-dictionary/
+│       │   ├── person-object.md
+│       │   ├── timecard-object.md
+│       │   ├── schedule-object.md
+│       │   └── payrule-object.md
+│       └── apis/
+│           ├── authentication.md
+│           ├── effective-dating.md
+│           └── integration-patterns.md
+│
+├── build/
+│   ├── README.md
+│   ├── scaffold/
+│   │   └── content-generator.md
+│   ├── templates/
+│   │   ├── lesson-template.mdx
+│   │   ├── exercise-template.mdx
+│   │   ├── lab-template.mdx
+│   │   ├── runbook-template.mdx
+│   │   └── scenario-template.mdx
+│   └── publish/
+│       └── approval-workflow.md
+│
+├── platform/
+│   ├── README.md
+│   ├── app/
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   ├── academy/
+│   │   │   ├── page.tsx
+│   │   │   ├── tracks/
+│   │   │   ├── modules/
+│   │   │   └── progress/
+│   │   ├── labs/
+│   │   │   ├── page.tsx
+│   │   │   ├── sandbox/
+│   │   │   └── scenarios/
+│   │   ├── reference/
+│   │   │   └── page.tsx
+│   │   └── account/
+│   │       └── page.tsx
+│   ├── components/
+│   │   ├── ui/
+│   │   ├── academy/
+│   │   ├── labs/
+│   │   └── reference/
+│   └── lib/
+│       ├── github.ts
+│       ├── grader.ts
+│       └── progress.ts
+│
+├── scripts/
+│   ├── build_catalog.py
+│   ├── check_links.py
+│   ├── scaffold_content.py
+│   └── validate_grader.py
+│
+├── docs/
+│   ├── README.md
+│   ├── CATALOG.md
+│   ├── standards.md
+│   └── templates/
+│
+├── grader/
+│   ├── README.md
+│   ├── validators/
+│   └── schemas/
+│
+├── operator-os/
+│   ├── README.md
+│   ├── runbooks/
+│   ├── checklists/
+│   └── governance/
+│
+├── blueprints/
+│   ├── README.md
+│   └── implementation-patterns/
+│
+├── toolkit/
+│   ├── README.md
+│   └── utilities/
+│
+├── sdk/
+│   ├── README.md
+│   ├── javascript/
+│   └── python/
+│
+├── sandbox/
+│   └── README.md
+│
+├── .markdownlint-cli2.yaml
+├── next.config.js
+├── tailwind.config.ts
+├── tsconfig.json
+└── package.json

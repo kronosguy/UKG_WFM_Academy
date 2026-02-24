@@ -1,0 +1,32 @@
+Search-Configuration:
+  engine: "Algolia or Meilisearch"
+  indexing:
+    - "Content title"
+    - "Content body"
+    - "Tags"
+    - "Categories"
+    - "Module names"
+  
+  filters:
+    - "By category"
+    - "By difficulty"
+    - "By module"
+    - "By artifact type"
+
+Navigation-Structure:
+  primary:
+    - "Academy"
+    - "Labs"
+    - "Reference"
+    - "Community"
+  
+  secondary:
+    - "Profile"
+    - "Progress"
+    - "Settings"
+    - "Sign Out"
+  
+  sidebar:
+    Level 1: "Modules (M00-M12, M-PLATFORM)"
+    Level 2: "Artifact Types"
+    Level 3: "Individual Items"

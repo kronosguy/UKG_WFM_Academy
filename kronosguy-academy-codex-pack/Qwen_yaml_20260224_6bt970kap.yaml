@@ -1,0 +1,38 @@
+Views:
+  Control-Center:
+    type: "table"
+    filters:
+      Area: "academy"
+    group_by: "Module"
+    sort_by: "Effort (desc)"
+    columns:
+      - "Title"
+      - "Status"
+      - "Artifact"
+      - "Module"
+      - "Effort"
+      - "Target Start"
+      - "Target Ship"
+  
+  Execution-Pipeline:
+    type: "board"
+    column_by: "Status"
+    swimlanes: "Artifact"
+    filters:
+      Area: "academy"
+  
+  Module-Ladder:
+    type: "board"
+    column_by: "Artifact"
+    swimlanes: "Module"
+    filters:
+      Area: "academy"
+  
+  Curriculum-Map:
+    type: "roadmap"
+    group_by: "Module"
+    date_fields:
+      start: "Target Start"
+      end: "Target Ship"
+    filters:
+      Artifact: "Lesson, Lab, Scenario"

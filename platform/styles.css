@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap');
+
+:root {
+  --bg-black: #000000;
+  --text-lime: #bef264;
+  --text-stone: #78716c;
+  --border-stone: #1c1917;
+  --bg-stone-dark: #0c0a09;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-black);
+  color: var(--text-lime);
+  font-family: var(--font-mono);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  line-height: 1.6;
+  selection-background-color: var(--text-lime);
+  selection-color: var(--bg-black);
+}
+
+#terminal-shell {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  margin-bottom: 4rem;
+  border-left: 2px solid var(--text-lime);
+  padding-left: 1.5rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.meta-info {
+  font-size: 0.8rem;
+  color: var(--text-stone);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 0.5rem;
+}
+
+.console-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.console-card {
+  border: 1px solid var(--border-stone);
+  background: var(--bg-stone-dark);
+  padding: 2rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.console-card:hover {
+  border-color: var(--text-lime);
+  box-shadow: 0 0 15px rgba(190, 242, 100, 0.1);
+}
+
+.console-card h3 {
+  font-size: 1.25rem;
+  margin: 0 0 1rem 0;
+  color: #fff;
+}
+
+.console-card p {
+  font-size: 0.9rem;
+  color: var(--text-stone);
+}
+
+.console-link {
+  color: var(--text-lime);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.console-link:hover {
+  text-decoration: underline;
+}
+
+footer {
+  margin-top: auto;
+  padding-top: 4rem;
+  border-top: 1px solid var(--border-stone);
+}
+
+.load-bar-container {
+  width: 100%;
+  max-width: 300px;
+  height: 4px;
+  background: var(--border-stone);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.load-bar-fill {
+  height: 100%;
+  background: var(--text-lime);
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+.log-stream {
+  font-size: 0.75rem;
+  color: var(--text-stone);
+  font-family: var(--font-mono);
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 18px;
+  background: var(--text-lime);
+  vertical-align: middle;
+  animation: blink 1s infinite;
+  margin-left: 4px;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}

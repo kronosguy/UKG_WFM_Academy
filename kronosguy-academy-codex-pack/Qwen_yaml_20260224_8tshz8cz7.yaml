@@ -1,0 +1,97 @@
+M00-Orientation:
+  title: "Orientation and Operator Mindset"
+  description: "Foundation of operator-grade UKG work"
+  items: 6 (Lesson, Exercise, Lab, Runbook, Scenario + Capstone)
+  effort_total: 8
+  duration_total: "3-4 hours"
+
+M01-Platform-Mental-Model:
+  title: "Platform Mental Model"
+  description: "How UKG really behaves"
+  items: 6
+  effort_total: 10
+  duration_total: "4-5 hours"
+
+M02-Identity-Access:
+  title: "Identity, Roles, and Access Control"
+  description: "Least privilege that still works"
+  items: 6
+  effort_total: 8
+  duration_total: "3-4 hours"
+
+M03-Time-Collection:
+  title: "Time Collection Control"
+  description: "WFC / devices / UTM realities"
+  items: 6
+  effort_total: 10
+  duration_total: "4-5 hours"
+
+M04-Mobile-Geofence:
+  title: "Mobile Punching and Geofence"
+  description: "UKG Pro WFM in real life"
+  items: 6
+  effort_total: 10
+  duration_total: "4-5 hours"
+
+M05-Scheduling-Ops:
+  title: "Scheduling Operations That Scale"
+  description: "Patterns for zones, workload, coverage"
+  items: 6
+  effort_total: 12
+  duration_total: "5-6 hours"
+
+M06-Timecard-Exceptions:
+  title: "Timecard Lifecycle and Exceptions"
+  description: "Exception taxonomy, aging, approvals"
+  items: 6
+  effort_total: 10
+  duration_total: "4-5 hours"
+
+M07-Pay-Rules:
+  title: "Pay Rules and Labor Calculations"
+  description: "The engine room"
+  items: 6
+  effort_total: 12
+  duration_total: "5-6 hours"
+
+M08-Compliance:
+  title: "Compliance: Meals, Attestations, Enforcement"
+  description: "Policy enforcement without manual policing"
+  items: 6
+  effort_total: 10
+  duration_total: "4-5 hours"
+
+M09-Reporting:
+  title: "Reporting That Leadership Trusts"
+  description: "Metric governance, data quality, scorecards"
+  items: 6
+  effort_total: 10
+  duration_total: "4-5 hours"
+
+M10-APIs-Integration:
+  title: "APIs and Integration"
+  description: "UKG Pro / UKG Pro WFM / UKG Ready"
+  items: 6
+  effort_total: 12
+  duration_total: "5-6 hours"
+
+M11-Tooling-Automation:
+  title: "Tooling and Automation"
+  description: "Validators, auditors, operators"
+  items: 6
+  effort_total: 12
+  duration_total: "5-6 hours"
+
+M12-Scenarios-Proof:
+  title: "Scenarios and Proof"
+  description: "End-to-end simulations with validation"
+  items: 6
+  effort_total: 15
+  duration_total: "6-8 hours"
+
+M-PLATFORM-Governance:
+  title: "Systems and Governance"
+  description: "Cross-cutting platform infrastructure"
+  items: 6
+  effort_total: 12
+  duration_total: "5-6 hours"

@@ -1,0 +1,24 @@
+Before-First-Deployment:
+  [ ] Install dependencies
+  [ ] Run locally successfully
+  [ ] All tests pass
+  [ ] Type checking passes
+  [ ] Linting passes
+  [ ] Build completes
+  [ ] No console errors
+
+Deployment:
+  [ ] Push to main branch
+  [ ] GitHub Actions runs
+  [ ] All checks pass
+  [ ] Site deploys successfully
+  [ ] Verify at kronosguy.com/academy
+  [ ] Test all main features
+
+Post-Launch:
+  [ ] Add to portfolio site
+  [ ] Update resume/LinkedIn
+  [ ] Share on social media
+  [ ] Monitor analytics
+  [ ] Collect feedback
+  [ ] Plan content updates

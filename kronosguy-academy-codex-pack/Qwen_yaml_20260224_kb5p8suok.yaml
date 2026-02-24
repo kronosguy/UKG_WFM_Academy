@@ -1,0 +1,55 @@
+# .github/workflows/deploy-production.yml
+name: deploy-production
+on:
+  push:
+    branches: [main]
+    paths:
+      - "platform/**"
+      - "academy/**"
+      - "labs/**"
+      - "reference/**"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      deployments: write
+    environment:
+      name: production
+      url: https://kronosguy.com/academy
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/download-artifact@v4
+        with:
+          name: platform-build
+          path: platform/.next
+      
+      - uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: platform
+          scope: ${{ secrets.VERCEL_SCOPE }}
+      
+      - name: Update GitHub Project
+        if: success()
+        run: |
+          # Auto-move items to "Shipped" on successful deploy
+          gh api graphql -f query='mutation($projectId:ID!, $itemId:ID!, $fieldId:ID!, $opt:String!){
+            updateProjectV2ItemFieldValue(input:{
+              projectId:$projectId,
+              itemId:$itemId,
+              fieldId:$fieldId,
+              value:{singleSelectOptionId:$opt}
+            }){projectV2Item{id}}
+          }' \
+          -f projectId="${{ secrets.PROJECT_ID }}" \
+          -f itemId="${{ github.event.head_commit.id }}" \
+          -f fieldId="${{ secrets.STATUS_FIELD_ID }}" \
+          -f opt="${{ secrets.SHIPPED_OPTION_ID }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

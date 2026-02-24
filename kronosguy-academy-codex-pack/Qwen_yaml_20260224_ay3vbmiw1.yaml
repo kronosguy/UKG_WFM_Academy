@@ -1,0 +1,22 @@
+Security-Headers:
+  - "Content Security Policy"
+  - "X-Frame-Options"
+  - "X-Content-Type-Options"
+  - "X-XSS-Protection"
+  - "Referrer-Policy"
+  - "Strict-Transport-Security"
+
+Vulnerability-Scanning:
+  - "Trivy security scanning"
+  - "Dependency auditing"
+  - "npm audit on every build"
+
+Access-Control:
+  - "GitHub OAuth authentication"
+  - "Role-based permissions"
+  - "Environment variable protection"
+
+Data-Protection:
+  - "No real production data"
+  - "Synthetic or redacted examples only"
+  - "PII exposure = GitHub Issue immediately"

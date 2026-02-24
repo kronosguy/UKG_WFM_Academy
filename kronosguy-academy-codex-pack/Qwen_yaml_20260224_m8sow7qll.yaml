@@ -1,0 +1,23 @@
+Frontend:
+  Framework: Next.js 14 (App Router)
+  Styling: Tailwind CSS + shadcn/ui
+  State: React Query + Zustand
+  Auth: NextAuth.js (GitHub OAuth)
+
+Backend:
+  API: Next.js API Routes
+  Database: PostgreSQL (Supabase)
+  Cache: Redis (Upstash)
+  Storage: Vercel Blob / AWS S3
+
+Integrations:
+  GitHub: REST + GraphQL API
+  Projects: GitHub Projects V2
+  Wiki: GitHub Wiki (separate repo)
+  Actions: GitHub Actions CI/CD
+
+LMS Engine:
+  Content: MDX with custom components
+  Progress: Custom tracking system
+  Labs: Docker-based sandboxes
+  Grading: Automated validation scripts

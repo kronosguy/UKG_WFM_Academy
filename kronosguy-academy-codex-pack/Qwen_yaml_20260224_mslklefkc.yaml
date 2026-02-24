@@ -1,0 +1,14 @@
+Traffic-Spikes:
+  GitHub-Pages: "Handles 500K+ requests/month by default"
+  For-higher: "Use Vercel or Docker on cloud hosting"
+
+Large-Content:
+  Current: "50+ markdown files (~500KB total)"
+  Limit: "1000+ files with no performance impact"
+  Solution: "Implement pagination/search if needed"
+
+Database-Integration:
+  If-needed-later:
+    # academy/lib/db/connection.ts
+    import { PrismaClient } from '@prisma/client'
+    export const db = new PrismaClient()
