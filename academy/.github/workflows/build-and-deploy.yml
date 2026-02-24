@@ -1,0 +1,286 @@
+name: Build and Deploy Academy
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - 'academy/**'
+      - '.github/workflows/build-and-deploy.yml'
+  pull_request:
+    branches:
+      - main
+      - develop
+    paths:
+      - 'academy/**'
+
+env:
+  NODE_VERSION: '18'
+  NEXT_PUBLIC_SITE_NAME: 'UKG WFM Academy'
+  NEXT_PUBLIC_SITE_DESCRIPTION: 'Production-grade learning for UKG workforce management systems'
+
+jobs:
+  lint-and-test:
+    name: Lint and Test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: 'academy/package-lock.json'
+
+      - name: Install dependencies
+        working-directory: academy
+        run: npm ci
+
+      - name: Run linting
+        working-directory: academy
+        run: npm run lint
+        continue-on-error: true
+
+      - name: Check markdown style
+        working-directory: academy
+        run: npm run lint:md
+        continue-on-error: true
+
+      - name: Validate markdown links
+        working-directory: academy
+        run: npm run lint:links
+        continue-on-error: true
+
+      - name: Type check
+        working-directory: academy
+        run: npm run type-check
+
+      - name: Run tests
+        working-directory: academy
+        run: npm test -- --coverage --watchAll=false
+        continue-on-error: true
+
+      - name: Format check
+        working-directory: academy
+        run: npm run format:check
+        continue-on-error: true
+
+  build:
+    name: Build Site
+    needs: lint-and-test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: 'academy/package-lock.json'
+
+      - name: Install dependencies
+        working-directory: academy
+        run: npm ci
+
+      - name: Generate navigation
+        working-directory: academy
+        run: npm run generate:nav
+
+      - name: Generate sitemap
+        working-directory: academy
+        run: npm run sitemap
+
+      - name: Generate robots.txt
+        working-directory: academy
+        run: npm run robots
+
+      - name: Build Next.js
+        working-directory: academy
+        run: npm run build
+        env:
+          NEXT_PUBLIC_ASSET_PREFIX: '/academy'
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: academy-build
+          path: academy/.next
+          retention-days: 1
+
+      - name: Upload public assets
+        uses: actions/upload-artifact@v3
+        with:
+          name: academy-public
+          path: academy/public
+          retention-days: 1
+
+  deploy:
+    name: Deploy to Production
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: production
+      url: https://kronosguy.com/academy
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: 'academy/package-lock.json'
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: academy-build
+          path: academy/.next
+
+      - name: Download public assets
+        uses: actions/download-artifact@v3
+        with:
+          name: academy-public
+          path: academy/public
+
+      - name: Verify build
+        working-directory: academy
+        run: |
+          if [ ! -d ".next" ]; then
+            echo "Build artifacts missing"
+            exit 1
+          fi
+          echo "Build verified successfully"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload to Pages
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: academy/.next/standalone/public
+
+      - name: Deploy to Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+
+      - name: Deployment notification
+        run: |
+          echo "Deployment completed successfully"
+          echo "URL: https://kronosguy.com/academy"
+
+  deploy-staging:
+    name: Deploy to Staging
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+    permissions:
+      contents: read
+
+    environment:
+      name: staging
+      url: https://staging.kronosguy.com/academy
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: academy-build
+          path: academy/.next
+
+      - name: Download public assets
+        uses: actions/download-artifact@v3
+        with:
+          name: academy-public
+          path: academy/public
+
+      - name: Deploy to staging
+        run: |
+          echo "Deploying to staging environment"
+          echo "Branch: develop"
+          echo "Timestamp: $(date)"
+
+  auto-approval:
+    name: Auto-Approval Check
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    permissions:
+      pull-requests: read
+
+    steps:
+      - name: Check PR status
+        run: |
+          echo "PR #${{ github.event.pull_request.number }}"
+          echo "Author: ${{ github.event.pull_request.user.login }}"
+          echo "Title: ${{ github.event.pull_request.title }}"
+
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: 'academy'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+        continue-on-error: true
+
+      - name: Upload Trivy results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+        continue-on-error: true
+
+      - name: Dependency check
+        working-directory: academy
+        run: npm audit --audit-level=moderate || true
+
+  notify:
+    name: Notify on Completion
+    needs: [deploy]
+    runs-on: ubuntu-latest
+    if: always()
+    permissions:
+      contents: read
+
+    steps:
+      - name: Deployment status
+        run: |
+          if [ "${{ needs.deploy.result }}" == "success" ]; then
+            echo "✓ Deployment successful"
+            echo "Academy available at: https://kronosguy.com/academy"
+          else
+            echo "✗ Deployment failed"
+          fi

@@ -1,0 +1,102 @@
+{
+  "site": {
+    "name": "UKG WFM Academy",
+    "url": "https://kronosguy.com/academy",
+    "description": "Production-grade learning platform for UKG Workforce Management systems",
+    "language": "en-US",
+    "image": "https://kronosguy.com/academy/og-image.png",
+    "author": "KronosGuy",
+    "email": "support@kronosguy.com"
+  },
+  "social": {
+    "twitter": "@kronosguy",
+    "github": "kronosguy",
+    "linkedin": "kronosguy"
+  },
+  "learning": {
+    "domains": [
+      {
+        "name": "Platform Documentation",
+        "path": "/academy/docs/platform",
+        "icon": "📚",
+        "description": "Learn how KronosGuy works"
+      },
+      {
+        "name": "Academy Learning",
+        "path": "/academy/docs/academy",
+        "icon": "🎓",
+        "description": "Master UKG WFM through courses"
+      },
+      {
+        "name": "Knowledge Base",
+        "path": "/academy/docs/knowledge-base",
+        "icon": "🔍",
+        "description": "Complete reference materials"
+      }
+    ]
+  },
+  "courses": {
+    "totalCourses": 15,
+    "totalHours": 50,
+    "totalLabs": 50,
+    "certifications": [
+      {
+        "name": "UKG WFM Associate",
+        "description": "Foundation level certification",
+        "duration": "4-6 hours"
+      },
+      {
+        "name": "UKG WFM Professional",
+        "description": "Intermediate level certification",
+        "duration": "12-14 hours"
+      },
+      {
+        "name": "UKG WFM Expert",
+        "description": "Advanced level certification",
+        "duration": "25-30 hours"
+      }
+    ]
+  },
+  "seo": {
+    "keywords": [
+      "UKG",
+      "Kronos",
+      "Workforce Management",
+      "WFM",
+      "Learning",
+      "Training",
+      "Academy",
+      "Online Learning",
+      "Certification",
+      "Time & Attendance",
+      "Scheduling",
+      "Labor Analytics"
+    ],
+    "canonical": "https://kronosguy.com/academy",
+    "robots": "index, follow",
+    "googleSiteVerification": "",
+    "theme-color": "#0284c7"
+  },
+  "api": {
+    "version": "v1",
+    "baseUrl": "https://api.ukg.com/wfm/v1",
+    "endpoints": {
+      "employees": "/employees",
+      "timeEntries": "/time-entries",
+      "schedules": "/schedules",
+      "reports": "/reports"
+    }
+  },
+  "analytics": {
+    "googleAnalyticsId": "G-XXXXXXXXXXXXX",
+    "hotjarId": "",
+    "mixpanelToken": ""
+  },
+  "contact": {
+    "email": "support@kronosguy.com",
+    "phone": "+1-800-KRONOS-1",
+    "website": "https://kronosguy.com",
+    "twitter": "https://twitter.com/kronosguy",
+    "linkedin": "https://linkedin.com/company/kronosguy"
+  }
+}
