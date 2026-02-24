@@ -1,0 +1,159 @@
+.card {
+  @apply bg-white border border-kg-dark-200 rounded-lg p-6 shadow-sm transition-shadow hover:shadow-md;
+}
+
+.cardDark {
+  @apply bg-kg-dark-800 border-kg-dark-700;
+}
+
+.cardHeader {
+  @apply mb-4 pb-4 border-b border-kg-dark-200;
+}
+
+.cardDark .cardHeader {
+  @apply border-kg-dark-700;
+}
+
+.cardTitle {
+  @apply text-xl font-bold text-kg-dark-900;
+}
+
+.cardDark .cardTitle {
+  @apply text-kg-dark-100;
+}
+
+.cardDescription {
+  @apply text-sm text-kg-dark-600;
+}
+
+.cardDark .cardDescription {
+  @apply text-kg-dark-400;
+}
+
+.badge {
+  @apply inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold;
+}
+
+.badgeSuccess {
+  @apply bg-kg-success-100 text-kg-success-800;
+}
+
+.badgeDark .badgeSuccess {
+  @apply bg-kg-success-900 text-kg-success-200;
+}
+
+.badgeWarning {
+  @apply bg-kg-warning-100 text-kg-warning-800;
+}
+
+.badgeDark .badgeWarning {
+  @apply bg-kg-warning-900 text-kg-warning-200;
+}
+
+.badgeError {
+  @apply bg-kg-error-100 text-kg-error-800;
+}
+
+.badgeDark .badgeError {
+  @apply bg-kg-error-900 text-kg-error-200;
+}
+
+.badgeAccent {
+  @apply bg-kg-accent-100 text-kg-accent-800;
+}
+
+.badgeDark .badgeAccent {
+  @apply bg-kg-accent-900 text-kg-accent-200;
+}
+
+.button {
+  @apply px-4 py-2 rounded-lg font-medium transition-all inline-flex items-center justify-center;
+}
+
+.buttonPrimary {
+  @apply bg-kg-accent-600 text-white hover:bg-kg-accent-700 active:scale-95;
+}
+
+.buttonSecondary {
+  @apply bg-kg-dark-200 text-kg-dark-900 hover:bg-kg-dark-300;
+}
+
+.buttonDark .buttonSecondary {
+  @apply bg-kg-dark-700 text-kg-dark-100 hover:bg-kg-dark-600;
+}
+
+.buttonGhost {
+  @apply text-kg-accent-600 hover:bg-kg-dark-100 border border-transparent hover:border-kg-accent-300;
+}
+
+.buttonDark .buttonGhost {
+  @apply text-kg-accent-400 hover:bg-kg-dark-800;
+}
+
+.buttonSmall {
+  @apply px-3 py-1 text-sm;
+}
+
+.buttonLarge {
+  @apply px-6 py-3 text-lg;
+}
+
+.alert {
+  @apply p-4 rounded-lg border-l-4;
+}
+
+.alertSuccess {
+  @apply bg-kg-success-50 border-kg-success-500 text-kg-success-900;
+}
+
+.alertDark .alertSuccess {
+  @apply bg-kg-success-900 border-kg-success-600 text-kg-success-200;
+}
+
+.alertWarning {
+  @apply bg-kg-warning-50 border-kg-warning-500 text-kg-warning-900;
+}
+
+.alertDark .alertWarning {
+  @apply bg-kg-warning-900 border-kg-warning-600 text-kg-warning-200;
+}
+
+.alertError {
+  @apply bg-kg-error-50 border-kg-error-500 text-kg-error-900;
+}
+
+.alertDark .alertError {
+  @apply bg-kg-error-900 border-kg-error-600 text-kg-error-200;
+}
+
+.alertInfo {
+  @apply bg-kg-accent-50 border-kg-accent-500 text-kg-accent-900;
+}
+
+.alertDark .alertInfo {
+  @apply bg-kg-accent-900 border-kg-accent-600 text-kg-accent-200;
+}
+
+.alertTitle {
+  @apply font-bold mb-1;
+}
+
+.alertDescription {
+  @apply text-sm;
+}
+
+.tab {
+  @apply px-4 py-2 font-medium border-b-2 border-transparent text-kg-dark-600 hover:text-kg-dark-900 transition-colors;
+}
+
+.tabActive {
+  @apply border-kg-accent-600 text-kg-accent-600;
+}
+
+.tabDark .tab {
+  @apply text-kg-dark-400 hover:text-kg-dark-100;
+}
+
+.tabDark .tabActive {
+  @apply border-kg-accent-400 text-kg-accent-400;
+}

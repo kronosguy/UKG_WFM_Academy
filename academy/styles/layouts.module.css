@@ -1,0 +1,75 @@
+.container {
+  @apply mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.containerNarrow {
+  @apply container max-w-3xl;
+}
+
+.containerNormal {
+  @apply container max-w-4xl;
+}
+
+.containerWide {
+  @apply container max-w-6xl;
+}
+
+.main {
+  @apply min-h-screen flex flex-col;
+}
+
+.content {
+  @apply flex-1 py-8 sm:py-12 lg:py-16;
+}
+
+.grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.gridTwoCols {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+}
+
+.gridThreeCols {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.section {
+  @apply py-12 sm:py-16 lg:py-20;
+}
+
+.sectionNarrow {
+  @apply section container-narrow;
+}
+
+.sectionNormal {
+  @apply section container-normal;
+}
+
+.sectionWide {
+  @apply section container-wide;
+}
+
+.hero {
+  @apply py-16 sm:py-24 lg:py-32;
+}
+
+.sidebar {
+  @apply hidden lg:block w-64 flex-shrink-0 order-last;
+}
+
+.main {
+  @apply flex-1;
+}
+
+.twoColumn {
+  @apply grid grid-cols-1 lg:grid-cols-4 gap-8;
+}
+
+.twoColumnMain {
+  @apply lg:col-span-3;
+}
+
+.twoColumnSidebar {
+  @apply lg:col-span-1 lg:sticky lg:top-4 lg:self-start;
+}
