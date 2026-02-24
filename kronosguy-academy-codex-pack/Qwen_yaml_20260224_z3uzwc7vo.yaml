@@ -1,0 +1,21 @@
+performance:
+  lighthouse:
+    performance: "95+"
+    accessibility: "95+"
+    best-practices: "95+"
+    seo: "100"
+  
+  metrics:
+    LCP: "<2.5s"
+    FID: "<100ms"
+    CLS: "<0.1"
+    TTI: "<3.8s"
+  
+  optimizations:
+    - "Image lazy loading"
+    - "Code splitting"
+    - "CSS modules (no conflicts)"
+    - "Static generation (SSG)"
+    - "Asset caching"
+    - "Gzip compression"
+    - "CDN ready"

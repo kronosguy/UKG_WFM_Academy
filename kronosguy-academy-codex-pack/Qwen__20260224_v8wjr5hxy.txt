@@ -1,0 +1,64 @@
+
+---
+
+## 📚 Content Taxonomy
+
+### Five Artifact Types (Strict System)
+
+```yaml
+Lesson:
+  purpose: "Conceptual understanding"
+  format: "MDX with embedded videos, diagrams, code"
+  duration: "10-20 minutes"
+  effort: 1
+  structure:
+    - Title & Objectives
+    - Conceptual Explanation
+    - Visual Diagrams
+    - Key Takeaways
+    - Knowledge Check (3-5 questions)
+    - Next Steps
+
+Exercise:
+  purpose: "Skill reinforcement"
+  format: "Interactive challenges with auto-grading"
+  duration: "5-15 minutes"
+  effort: 1
+  grading:
+    automated: true
+    attempts: "unlimited"
+    hints: "3 per exercise"
+    points: 10
+
+Lab:
+  purpose: "Hands-on application"
+  format: "Live environment with guided tasks"
+  duration: "30-60 minutes"
+  effort: 2
+  environment:
+    type: "ephemeral Docker container"
+    ttl: "2 hours"
+    resources: "1 CPU, 2GB RAM"
+    preloaded: "synthetic UKG data"
+
+Runbook:
+  purpose: "Operational procedures"
+  format: "Step-by-step operational guide"
+  duration: "15-30 minutes"
+  effort: 1
+  use_cases:
+    - Incident response
+    - Scheduled maintenance
+    - Compliance audits
+    - Configuration changes
+
+Scenario:
+  purpose: "End-to-end simulation"
+  format: "Complex multi-step problem with grading"
+  duration: "60-120 minutes"
+  effort: 3
+  examples:
+    - "Missed Punch Recovery: End-to-End Triage"
+    - "Geofence Chaos Week"
+    - "Pay Rule Regression Investigation"
+    - "Multi-Market Standardization"

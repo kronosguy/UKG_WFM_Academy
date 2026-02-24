@@ -1,0 +1,28 @@
+Auto-Approval-Rules:
+  trigger: "content.submitted"
+  conditions:
+    artifact: ["Exercise", "Lab"]
+    grader_status: "passed"
+    lint_status: "passed"
+    link_check: "passed"
+  actions:
+    - "update_project_status: Shipped"
+    - "trigger_deploy: academy"
+    - "notify_user: completion"
+
+  trigger: "content.proposed"
+  conditions:
+    artifact: ["Lesson", "Runbook", "Scenario"]
+    reviewer_assigned: true
+    ci_status: "success"
+  actions:
+    - "notify_maintainer: review_required"
+
+  trigger: "deploy.success"
+  conditions:
+    branch: "main"
+    environment: "production"
+  actions:
+    - "update_wiki: release_notes"
+    - "increment_version: content"
+    - "cache_invalidate: cdn"

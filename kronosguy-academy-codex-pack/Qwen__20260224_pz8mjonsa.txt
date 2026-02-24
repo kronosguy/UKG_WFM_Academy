@@ -1,0 +1,20 @@
+
+---
+
+## 📝 Frontmatter Standards
+
+### Required Fields
+
+```yaml
+---
+id: "unique-identifier"           # Required: slug-format
+title: "Page Title"               # Required: max 120 chars
+description: "Meta description"   # Required: SEO
+category: "Platform|Academy|UKG"  # Required: domain
+order: 1                          # Required: sort order
+difficulty: "Beginner|Intermediate|Advanced"
+estimatedTime: "15 minutes"
+tags: ["tag1", "tag2", "tag3"]
+version: "1.0"
+last-reviewed: "2026-02-01"
+---

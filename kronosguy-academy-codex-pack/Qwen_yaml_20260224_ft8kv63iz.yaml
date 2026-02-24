@@ -1,0 +1,17 @@
+accessibility:
+  compliance: "WCAG 2.1 AA"
+  
+  features:
+    - "Semantic HTML"
+    - "Screen reader support"
+    - "Keyboard navigation"
+    - "Color contrast (4.5:1 minimum)"
+    - "Alt text for images"
+    - "Focus indicators"
+    - "Skip links"
+    - "ARIA labels"
+  
+  testing:
+    - "axe-core automated scans"
+    - "Manual keyboard testing"
+    - "Screen reader testing (NVDA, VoiceOver)"

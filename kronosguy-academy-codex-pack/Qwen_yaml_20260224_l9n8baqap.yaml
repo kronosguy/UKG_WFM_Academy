@@ -1,0 +1,36 @@
+LabTerminal:
+  position: "right panel or full-screen toggle"
+  width: "400px (collapsible)"
+  height: "100% of viewport"
+  background: "#0f172a"
+  font: "JetBrains Mono, 14px"
+  
+  features:
+    - Syntax highlighting
+    - Command history
+    - Copy/paste support
+    - Real-time output
+    - Error highlighting
+
+LabControls:
+  buttons:
+    - "Start Environment"
+    - "Reset Environment"
+    - "Validate Solution"
+    - "View Solution"
+    - "Submit for Grading"
+  
+  status_indicators:
+    - "Environment: Starting/Ready/Stopped"
+    - "Validation: Pending/Passed/Failed"
+    - "Time Elapsed"
+    - "Hints Available"
+
+SandboxEnvironment:
+  provisioning: "Docker containers via Kubernetes"
+  ttl: "2 hours default, auto-extend on activity"
+  isolation: "per-user, per-lab"
+  resources:
+    cpu: "1 core"
+    memory: "2GB"
+    storage: "5GB"

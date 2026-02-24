@@ -1,0 +1,17 @@
+Content Creation Flow:
+1. Scaffold content (GitHub Action)
+2. Write markdown with frontmatter
+3. Run local preview (npm run dev)
+4. Commit and push
+5. CI/CD validates (lint, links, build)
+6. Auto-deploy to production
+7. Update GitHub Project status
+8. Notify stakeholders
+
+Content Update Flow:
+1. Edit existing markdown
+2. Update version and last-reviewed
+3. Commit with changelog
+4. Push to main
+5. Auto-deploy
+6. Update catalog

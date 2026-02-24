@@ -1,0 +1,24 @@
+Check-Deployment-Status:
+  # View GitHub Actions logs
+  gh workflow view build-and-deploy.yml
+  
+  # Or via GitHub web interface
+  # https://github.com/kronosguy/academy/actions
+
+Monitor-Performance:
+  # Build and check stats
+  npm run build
+  
+  # Run Lighthouse locally
+  npm install -g lighthouse
+  lighthouse https://kronosguy.com/academy --view
+
+Verify-SEO:
+  # Check sitemap
+  https://kronosguy.com/academy/sitemap.xml
+  
+  # Check robots.txt
+  https://kronosguy.com/academy/robots.txt
+  
+  # Validate with Google
+  https://search.google.com/search-console

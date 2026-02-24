@@ -1,0 +1,9 @@
+Automation-Rules:
+  - trigger: "item_added_to_project"
+    action: "set_status_to_triage"
+  
+  - trigger: "pr_merged"
+    action: "set_status_to_shipped"
+  
+  - trigger: "status_changed_to_shipped"
+    action: "close_linked_issue"

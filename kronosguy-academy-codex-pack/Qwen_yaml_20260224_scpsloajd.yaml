@@ -1,0 +1,44 @@
+Lab-Engine:
+  environment-provisioning:
+    orchestrator: "Kubernetes"
+    runtime: "Docker"
+    isolation: "per-user, per-lab"
+  
+  resource-limits:
+    cpu: "1 core"
+    memory: "2GB"
+    storage: "5GB"
+    network: "isolated VPC"
+  
+  lifecycle:
+    startup: "< 30 seconds"
+    ttl: "2 hours"
+    auto-extend: "30 min on activity"
+    cleanup: "immediate on lab close"
+  
+  preloaded-data:
+    type: "synthetic UKG data"
+    employees: "100-1000 records"
+    timecards: "30 days history"
+    schedules: "2 weeks forward"
+    devices: "10-50 simulated"
+
+Grading-System:
+  validators:
+    - "Schema validation (YAML/JSON)"
+    - "Configuration syntax check"
+    - "API response validation"
+    - "Database state verification"
+    - "Log analysis"
+  
+  scoring:
+    automated: true
+    criteria:
+      - "Correctness (60%)"
+      - "Completeness (25%)"
+      - "Best practices (15%)"
+    
+    feedback:
+      immediate: true
+      detailed: true
+      hints: "after 2 failed attempts"

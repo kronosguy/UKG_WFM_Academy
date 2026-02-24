@@ -1,0 +1,77 @@
+# .github/workflows/scaffold-content.yml
+name: scaffold-content
+on:
+  workflow_dispatch:
+    inputs:
+      area:
+        description: "Target area folder"
+        required: true
+        type: choice
+        options:
+          - academy
+          - blueprints
+          - docs
+          - fieldmanual
+          - grader
+          - operator-os
+          - platform
+          - sandbox
+          - scenarios
+          - sdk
+          - toolkit
+      module:
+        description: "Optional module folder"
+        required: false
+        type: string
+      title:
+        description: "Content title"
+        required: true
+        type: string
+      slug:
+        description: "Optional slug"
+        required: false
+        type: string
+      artifact:
+        description: "Artifact type"
+        required: false
+        type: choice
+        options:
+          - Lesson
+          - Exercise
+          - Lab
+          - Runbook
+          - Scenario
+
+jobs:
+  scaffold:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      
+      - run: |
+          python scripts/scaffold_content.py \
+            --area "${{ inputs.area }}" \
+            --module "${{ inputs.module }}" \
+            --title "${{ inputs.title }}" \
+            --slug "${{ inputs.slug }}" \
+            --artifact "${{ inputs.artifact }}"
+          python scripts/build_catalog.py
+      
+      - uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore: scaffold ${{ inputs.area }} content"
+          title: "Scaffold: ${{ inputs.area }} — ${{ inputs.title }}"
+          body: |
+            Auto-scaffolded content.
+            - Area: ${{ inputs.area }}
+            - Module: ${{ inputs.module }}
+            - Artifact: ${{ inputs.artifact }}
+          branch: "scaffold/${{ inputs.area }}/${{ github.run_id }}"
+          delete-branch: true

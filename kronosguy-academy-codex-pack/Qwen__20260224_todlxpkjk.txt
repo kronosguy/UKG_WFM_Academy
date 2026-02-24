@@ -1,0 +1,22 @@
+
+---
+
+## 📥 Download Instructions
+
+To use these files with Codex:
+
+1. **Save each file** in your project root:
+   - `MASTER_SPECIFICATION.md`
+   - `LMS_ARCHITECTURE.md`
+   - `GITHUB_INTEGRATION.md`
+   - `DESIGN_SYSTEM.md`
+   - `DEPLOYMENT_CONFIG.md`
+   - `CONTENT_TAXONOMY.md`
+
+2. **Run Codex** with these specifications to generate the complete platform
+
+3. **Deploy** by pushing to main branch:
+   ```bash
+   git add .
+   git commit -m "Deploy KronosGuy Academy - Complete production-ready platform"
+   git push origin main
