@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UKG Pro Workforce Management — Sandbox</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f7f9; }
+    .container { display: flex; min-height: 100vh; }
+    .sidebar { width: 220px; background: #fff; border-right: 1px solid #e1e6ee; padding: .5rem 0; overflow-y: auto; }
+    .main { flex: 1; display: flex; flex-direction: column; }
+    .topbar { height: 60px; background: #003865; color: #fff; display: flex; align-items: center; padding: 0 2rem; gap: 1.5rem; border-bottom: 1px solid #002342; }
+    .topbar-logo { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; display: flex; align-items: center; gap: .5rem; }
+    .topbar-search { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); color: #fff; padding: .5rem 1rem; border-radius: 4px; font-size: .75rem; width: 240px; }
+    .topbar-search::placeholder { color: rgba(255,255,255,.5); }
+    .topbar-user { margin-left: auto; display: flex; align-items: center; gap: 1rem; font-size: .75rem; }
+    .avatar { width: 32px; height: 32px; border-radius: 50%; background: #a3e635; display: flex; align-items: center; justify-content: center; color: #000; font-weight: 700; font-size: .65rem; }
+    .content { flex: 1; overflow-y: auto; padding: 2rem; }
+    .nav-item { padding: .7rem 1.25rem; font-size: .72rem; color: #1a2b4a; cursor: pointer; display: flex; align-items: center; gap: .6rem; transition: all .15s; user-select: none; }
+    .nav-item:hover { background: #f5f7f9; color: #0070ac; }
+    .nav-item.active { background: #e6f2f9; color: #0070ac; font-weight: 600; border-left: 3px solid #0070ac; }
+    .nav-group { padding: .5rem 1.25rem .3rem; font-size: .6rem; color: #6b7a99; text-transform: uppercase; letter-spacing: .12em; margin-top: .75rem; font-weight: 700; }
+    .breadcrumb { font-size: .65rem; color: #6b7a99; margin-bottom: 1.5rem; }
+    .page-title { font-size: 1.25rem; font-weight: 700; color: #1a2b4a; margin-bottom: 1.5rem; }
+    .toolbar { display: flex; gap: .5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .btn { padding: .5rem 1rem; border: 1px solid #cbd2dc; background: #fff; color: #1a2b4a; border-radius: 4px; cursor: pointer; font-size: .72rem; font-weight: 600; transition: all .15s; }
+    .btn-primary { background: #0070ac; color: #fff; border-color: #0070ac; }
+    .btn:hover { background: #f5f7f9; }
+    .btn-primary:hover { background: #005a8c; }
+    .table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #e1e6ee; border-radius: 4px; overflow: hidden; font-size: .72rem; }
+    .table th { background: #eef1f5; color: #6b7a99; font-weight: 600; padding: .75rem; text-align: left; border-bottom: 1px solid #dde2e8; text-transform: uppercase; font-size: .6rem; letter-spacing: .08em; }
+    .table td { padding: .75rem; border-bottom: 1px solid #e1e6ee; color: #1a2b4a; }
+    .table tr:hover { background: #f9fafb; }
+    .badge { display: inline-block; padding: 3px 8px; border-radius: 3px; font-size: .6rem; font-weight: 700; }
+    .badge-ok { background: #eef7f3; color: #007a4c; }
+    .badge-pending { background: #fff8ec; color: #e6840a; }
+    .badge-missed { background: #fff0f0; color: #cc0000; }
+    .badge-ot { background: #eef0fa; color: #3949ab; }
+    .stat-card { background: #fff; border: 1px solid #e1e6ee; padding: 1.25rem; border-radius: 4px; flex: 1; min-width: 200px; }
+    .stat-label { font-size: .65rem; color: #6b7a99; text-transform: uppercase; letter-spacing: .1em; margin-bottom: .3rem; }
+    .stat-value { font-size: 1.5rem; font-weight: 700; color: #0070ac; }
+    .form-group { margin-bottom: 1rem; }
+    .label { display: block; font-size: .7rem; font-weight: 600; color: #1a2b4a; margin-bottom: .3rem; }
+    .input { width: 100%; padding: .5rem; border: 1px solid #dde2e8; border-radius: 4px; font-size: .75rem; }
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 1000; align-items: center; justify-content: center; }
+    .modal.open { display: flex; }
+    .modal-content { background: #fff; padding: 2rem; border-radius: 4px; width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto; }
+    .modal-title { font-size: 1.1rem; font-weight: 700; color: #1a2b4a; margin-bottom: 1rem; }
+    .close-modal { float: right; cursor: pointer; font-size: 1.5rem; color: #6b7a99; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="nav-group" style="margin-top: 0;">MENU</div>
+    <div class="nav-item active" onclick="showPage('dashboard')">🏠 Home</div>
+    <div class="nav-group">TIMEKEEPING</div>
+    <div class="nav-item" onclick="showPage('timecards')">📋 Manage Timecards</div>
+    <div class="nav-item" onclick="showPage('exceptions')">⚠️ Exceptions</div>
+    <div class="nav-item" onclick="showPage('accruals')">📊 Accruals</div>
+    <div class="nav-group">SCHEDULING</div>
+    <div class="nav-item" onclick="showPage('schedule')">📅 Schedule Manager</div>
+    <div class="nav-group">ADMIN</div>
+    <div class="nav-item" onclick="showPage('admin')">⚙️ Administration</div>
+    <div class="nav-item" onclick="showPage('payroll')">💰 Payroll Setup</div>
+    <div class="nav-item" onclick="showPage('settings')">🔧 Settings</div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-logo">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a3e635" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        UKG Pro Workforce Management
+      </div>
+      <input type="text" class="topbar-search" placeholder="Search employees, timecards...">
+      <div class="topbar-user">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <div class="avatar">SK</div>
+        <span>Sarah K.</span>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+      <!-- DASHBOARD -->
+      <div id="dashboard-page">
+        <div class="breadcrumb">Home</div>
+        <div class="page-title">Welcome Back, Sarah</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+          <div class="stat-card">
+            <div class="stat-label">Pending Timecards</div>
+            <div class="stat-value">7</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Open Exceptions</div>
+            <div class="stat-value">12</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Schedule Coverage</div>
+            <div class="stat-value">94%</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Payroll Ready</div>
+            <div class="stat-value">1,847 / 1,850</div>
+          </div>
+        </div>
+        <div class="page-title" style="font-size: 1rem; margin-top: 2rem;">Recent Activity</div>
+        <table class="table">
+          <thead>
+            <tr><th>Timestamp</th><th>Action</th><th>Details</th><th>User</th></tr>
+          </thead>
+          <tbody id="activity-table">
+            <tr><td>2025-02-21 14:32</td><td>Approved</td><td>5 timecards for week ending 2/21</td><td>Sarah M.</td></tr>
+            <tr><td>2025-02-20 16:15</td><td>Manual Entry</td><td>Missed punch added 2/18 08:00</td><td>James T.</td></tr>
+            <tr><td>2025-02-20 09:30</td><td>Published</td><td>Schedule for 2/24–3/2</td><td>System</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- TIMECARDS -->
+      <div id="timecards-page" style="display: none;">
+        <div class="breadcrumb">Timekeeping › Manage Timecards</div>
+        <div class="page-title">Manage Timecards</div>
+        <div class="toolbar">
+          <button class="btn btn-primary">✓ Approve Selected</button>
+          <button class="btn">✕ Reject</button>
+          <button class="btn">✎ Edit</button>
+          <button class="btn">📅 Pay Period ▾</button>
+        </div>
+        <table class="table">
+          <thead>
+            <tr><th><input type="checkbox" style="accent-color: #0070ac;"></th><th>Employee</th><th>Reg Hrs</th><th>OT Hrs</th><th>Exceptions</th><th>Status</th></tr>
+          </thead>
+          <tbody id="timecard-table">
+            <tr><td><input type="checkbox" style="accent-color: #0070ac;"></td><td><strong>Mitchell, Sarah</strong><br><span style="color: #6b7a99; font-size: .65rem;">Emergency / RN</span></td><td>30.2</td><td>0.0</td><td><span class="badge badge-ok">✓ Clean</span></td><td><span class="badge badge-ok">Approved</span></td></tr>
+            <tr><td><input type="checkbox" style="accent-color: #0070ac;"></td><td><strong>Torres, James</strong><br><span style="color: #6b7a99; font-size: .65rem;">Radiology / Tech</span></td><td>24.1</td><td>0.0</td><td><span class="badge badge-missed">! Missed Punch</span></td><td><span class="badge badge-pending">Pending</span></td></tr>
+            <tr><td><input type="checkbox" style="accent-color: #0070ac;"></td><td><strong>Gonzalez, Maria</strong><br><span style="color: #6b7a99; font-size: .65rem;">Admin / Coordinator</span></td><td>32.5</td><td>1.75</td><td><span class="badge badge-ot">OT > 8hr</span></td><td><span class="badge badge-pending">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- EXCEPTIONS -->
+      <div id="exceptions-page" style="display: none;">
+        <div class="breadcrumb">Timekeeping › Exceptions</div>
+        <div class="page-title">Exceptions</div>
+        <div class="toolbar">
+          <button class="btn">🔄 Refresh</button>
+          <button class="btn">🔧 Edit</button>
+          <button class="btn">Severity ▾</button>
+        </div>
+        <table class="table">
+          <thead>
+            <tr><th>Date</th><th>Employee</th><th>Exception Type</th><th>Severity</th><th>Status</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>2/18/2025</td><td>James Torres</td><td>Missed Punch</td><td><span class="badge badge-pending">Medium</span></td><td>Unresolved</td><td><button class="btn" style="padding: 2px 8px;">Resolve</button></td></tr>
+            <tr><td>2/19/2025</td><td>Maria Gonzalez</td><td>Overtime > 8 hrs</td><td><span class="badge badge-ot">Low</span></td><td>Pending Review</td><td><button class="btn" style="padding: 2px 8px;">Review</button></td></tr>
+            <tr><td>2/21/2025</td><td>Lisa Johnson</td><td>Late Punch</td><td><span class="badge badge-pending">Low</span></td><td>Pending</td><td><button class="btn" style="padding: 2px 8px;">Resolve</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- SCHEDULE -->
+      <div id="schedule-page" style="display: none;">
+        <div class="breadcrumb">Scheduling › Schedule Manager</div>
+        <div class="page-title">Schedule Manager</div>
+        <div class="toolbar">
+          <button class="btn btn-primary">+ New Schedule</button>
+          <button class="btn">📋 Publish</button>
+          <button class="btn">📊 Coverage Analysis</button>
+          <button class="btn">Week ▾</button>
+        </div>
+        <div style="background: #fff; border: 1px solid #e1e6ee; border-radius: 4px; padding: 1.5rem;">
+          <table class="table">
+            <thead>
+              <tr><th>Employee</th><th>Mon 2/24</th><th>Tue 2/25</th><th>Wed 2/26</th><th>Thu 2/27</th><th>Fri 2/28</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Sarah Mitchell</strong></td><td>07:00-15:00</td><td>07:00-15:00</td><td>OFF</td><td>07:00-15:00</td><td>07:00-15:00</td></tr>
+              <tr><td><strong>James Torres</strong></td><td>08:00-16:00</td><td>OFF</td><td>08:00-16:00</td><td>08:00-16:00</td><td>08:00-16:00</td></tr>
+              <tr><td><strong>Maria Gonzalez</strong></td><td>09:00-17:00</td><td>09:00-17:00</td><td>09:00-17:00</td><td>OFF</td><td>09:00-17:00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ADMIN -->
+      <div id="admin-page" style="display: none;">
+        <div class="breadcrumb">Admin › Administration</div>
+        <div class="page-title">Administration</div>
+        <div class="toolbar">
+          <button class="btn btn-primary">+ Add User</button>
+          <button class="btn">🔐 Permissions</button>
+          <button class="btn">📋 Audit Log</button>
+        </div>
+        <table class="table">
+          <thead>
+            <tr><th>Name</th><th>Role</th><th>Location</th><th>Status</th><th>Last Login</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Sarah Mitchell</td><td>Operator</td><td>Hospital A</td><td><span class="badge badge-ok">Active</span></td><td>2025-02-21 14:32</td></tr>
+            <tr><td>James Torres</td><td>Analyst</td><td>Hospital A</td><td><span class="badge badge-ok">Active</span></td><td>2025-02-21 09:15</td></tr>
+            <tr><td>Maria Gonzalez</td><td>Admin</td><td>Hospital B</td><td><span class="badge badge-ok">Active</span></td><td>2025-02-21 10:45</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PAYROLL -->
+      <div id="payroll-page" style="display: none;">
+        <div class="breadcrumb">Admin › Payroll Setup</div>
+        <div class="page-title">Payroll Configuration</div>
+        <table class="table">
+          <thead>
+            <tr><th>Rule Name</th><th>Type</th><th>Trigger</th><th>Rate / Multiplier</th><th>Priority</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Regular Time</td><td>Base</td><td>All Hours</td><td>$18.00/hr</td><td>1</td></tr>
+            <tr><td>Overtime (1.5x)</td><td>Multiplier</td><td>> 40 hrs/week</td><td>$27.00/hr</td><td>2</td></tr>
+            <tr><td>Night Differential</td><td>Adjustment</td><td>After 11:00 PM</td><td>+$2.50/hr</td><td>2</td></tr>
+            <tr><td>Holiday Multiplier</td><td>Multiplier</td><td>Holiday</td><td>2.0x</td><td>3</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- SETTINGS -->
+      <div id="settings-page" style="display: none;">
+        <div class="breadcrumb">Admin › Settings</div>
+        <div class="page-title">System Settings</div>
+        <div style="background: #fff; border: 1px solid #e1e6ee; border-radius: 4px; padding: 1.5rem; max-width: 600px;">
+          <div class="form-group">
+            <label class="label">Organization Name</label>
+            <input class="input" value="KronosGuy Academy Hospital Network" readonly>
+          </div>
+          <div class="form-group">
+            <label class="label">Primary Location</label>
+            <input class="input" value="Hospital A, New York" readonly>
+          </div>
+          <div class="form-group">
+            <label class="label">Payroll Cutoff Day</label>
+            <input class="input" value="Sunday" readonly>
+          </div>
+          <div class="form-group">
+            <label class="label">Geofence Buffer (meters)</label>
+            <input class="input" value="50" readonly>
+          </div>
+          <button class="btn btn-primary" style="margin-top: 1rem;">Save Changes</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="../js/sandbox-data.js"></script>
+<script>
+  function showPage(pageName) {
+    document.querySelectorAll('[id$="-page"]').forEach(el => el.style.display = 'none');
+    document.getElementById(pageName + '-page').style.display = 'block';
+    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+    event?.target?.closest('.nav-item')?.classList.add('active');
+  }
+
+  // Load initial data
+  const data = getSandboxData();
+  console.log('Sandbox loaded with', data.employees.length, 'employees');
+</script>
+
+</body>
+</html>

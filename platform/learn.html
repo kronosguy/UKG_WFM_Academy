@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academy Curriculum — KronosGuy Academy</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body { background: #f5f7f9; color: #1a2b4a; font-family: 'Inter', -apple-system, sans-serif; margin: 0; }
+    .learn-container { display: flex; min-height: 100vh; }
+    .learn-sidebar { width: 280px; background: #fff; border-right: 1px solid #dde2e8; overflow-y: auto; padding: .5rem 0; }
+    .learn-sidebar-header { padding: 1.5rem; border-bottom: 1px solid #dde2e8; }
+    .learn-sidebar-logo { font-size: .75rem; font-weight: 900; letter-spacing: .15em; color: #a3e635; text-transform: uppercase; margin-bottom: .5rem; }
+    .learn-sidebar-title { font-size: .85rem; font-weight: 700; color: #1a2b4a; }
+    .learn-sidebar-search { width: 100%; margin-top: .75rem; padding: .5rem .75rem; border: 1px solid #dde2e8; border-radius: 4px; font-size: .72rem; }
+    .module-nav { padding: .5rem 0; }
+    .module-nav-item { padding: .75rem 1.25rem; font-size: .72rem; color: #6b7a99; cursor: pointer; display: flex; align-items: center; gap: .5rem; transition: all .15s; user-select: none; }
+    .module-nav-item:hover { background: #f5f7f9; color: #0070ac; }
+    .module-nav-item.active { background: #e6f2f9; color: #0070ac; font-weight: 600; border-left: 3px solid #0070ac; }
+    .module-nav-header { padding: .5rem 1.25rem .3rem; font-size: .6rem; color: #6b7a99; text-transform: uppercase; letter-spacing: .12em; margin-top: .5rem; font-weight: 700; }
+    .lesson-nav-item { padding: .5rem 1.25rem .5rem 3rem; font-size: .65rem; color: #6b7a99; cursor: pointer; transition: all .15s; display: flex; gap: .5rem; }
+    .lesson-nav-item:hover { color: #0070ac; }
+    .lesson-nav-item.active { color: #0070ac; font-weight: 600; }
+    .learn-main { flex: 1; display: flex; flex-direction: column; }
+    .learn-topbar { height: 60px; background: #fff; border-bottom: 1px solid #dde2e8; display: flex; align-items: center; padding: 0 2rem; gap: 1rem; }
+    .learn-topbar-logo { font-size: .7rem; font-weight: 700; letter-spacing: .1em; color: #a3e635; text-transform: uppercase; }
+    .learn-topbar-breadcrumb { font-size: .65rem; color: #6b7a99; flex: 1; }
+    .learn-topbar-progress { font-size: .65rem; color: #0070ac; font-weight: 600; }
+    .learn-content { flex: 1; overflow-y: auto; display: flex; }
+    .learn-panel { flex: 1; padding: 2rem; max-width: 800px; }
+    .lesson-title { font-size: 1.5rem; font-weight: 700; color: #1a2b4a; margin-bottom: 1rem; }
+    .lesson-meta { display: flex; gap: 1rem; margin-bottom: 2rem; font-size: .72rem; color: #6b7a99; }
+    .lesson-meta-badge { background: #e6f2f9; color: #0070ac; padding: 4px 8px; border-radius: 3px; }
+    .lesson-body { font-size: .85rem; line-height: 1.8; color: #4a5568; }
+    .lesson-body h3 { color: #1a2b4a; margin-top: 1.5rem; margin-bottom: .75rem; font-size: 1rem; }
+    .lesson-body ul, .lesson-body ol { margin: 1rem 0; padding-left: 2rem; }
+    .lesson-body li { margin: .5rem 0; }
+    .lesson-body code { background: #f5f7f9; padding: 2px 6px; border-radius: 3px; font-family: 'JetBrains Mono', monospace; font-size: .8rem; }
+    .lesson-body pre { background: #1a2b4a; color: #a3e635; padding: 1rem; border-radius: 4px; overflow-x: auto; font-size: .72rem; }
+    .sandbox-panel { width: 500px; background: #fff; border-left: 1px solid #dde2e8; overflow: hidden; display: flex; flex-direction: column; }
+    .sandbox-panel-header { padding: 1rem; border-bottom: 1px solid #dde2e8; background: #003865; color: #fff; font-size: .7rem; font-weight: 700; letter-spacing: .1em; }
+    .sandbox-panel-content { flex: 1; overflow-y: auto; border: 1px solid #dde2e8; }
+    .drill-buttons { display: flex; gap: .75rem; margin-top: 2rem; }
+    .btn-drill { background: #0070ac; color: #fff; padding: .75rem 1.25rem; border: none; border-radius: 4px; cursor: pointer; font-size: .72rem; font-weight: 600; transition: background .15s; }
+    .btn-drill:hover { background: #005a8c; }
+    .btn-next { background: #a3e635; color: #000; }
+    .btn-next:hover { background: #84cc16; }
+    @media (max-width: 1200px) { .sandbox-panel { width: 350px; } }
+    @media (max-width: 900px) { .sandbox-panel { display: none; } .learn-panel { max-width: 100%; } }
+  </style>
+</head>
+<body>
+
+<div class="learn-container">
+  <!-- SIDEBAR -->
+  <div class="learn-sidebar" id="sidebar">
+    <div class="learn-sidebar-header">
+      <div class="learn-sidebar-logo">[KG] Academy</div>
+      <div class="learn-sidebar-title">Curriculum</div>
+      <input type="text" class="learn-sidebar-search" id="searchInput" placeholder="Search lessons...">
+    </div>
+    <div class="module-nav" id="moduleNav"></div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="learn-main">
+    <!-- TOPBAR -->
+    <div class="learn-topbar">
+      <div class="learn-topbar-logo">UKG PRO WORKFORCE MANAGEMENT</div>
+      <div class="learn-topbar-breadcrumb" id="breadcrumb">Loading...</div>
+      <div class="learn-topbar-progress" id="progress">0%</div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="learn-content">
+      <div class="learn-panel" id="lessonPanel">
+        <div style="color: #6b7a99; font-size: .85rem;">Select a lesson to begin...</div>
+      </div>
+
+      <!-- SANDBOX PREVIEW -->
+      <div class="sandbox-panel" id="sandboxPanel">
+        <div class="sandbox-panel-header">/ LIVE SANDBOX</div>
+        <div class="sandbox-panel-content" id="sandboxContent">
+          <iframe id="sandboxFrame" style="width: 100%; height: 100%; border: none;" src="sandbox/"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/curriculum.js"></script>
+<script>
+  // Load curriculum
+  const curriculum = getCurriculum();
+  let currentLesson = null;
+
+  // Render sidebar
+  const moduleNav = document.getElementById('moduleNav');
+  curriculum.modules.forEach((mod, modIdx) => {
+    const modEl = document.createElement('div');
+    modEl.innerHTML = `
+      <div class="module-nav-header">Module ${String(modIdx).padStart(2, '0')}</div>
+      <div class="module-nav-item" data-module="${modIdx}">
+        <span>📘</span> <span>${mod.title}</span>
+      </div>
+      <div class="module-lessons" id="lessons-${modIdx}" style="display: none;"></div>
+    `;
+    moduleNav.appendChild(modEl);
+
+    const lessonContainer = modEl.querySelector(`#lessons-${modIdx}`);
+    mod.lessons.forEach((lesson, lesIdx) => {
+      const lesEl = document.createElement('div');
+      lesEl.className = 'lesson-nav-item';
+      lesEl.dataset.lesson = `${modIdx}-${lesIdx}`;
+      lesEl.textContent = `${String(lesIdx + 1).padStart(2, '0')}. ${lesson.title}`;
+      lesEl.onclick = () => loadLesson(modIdx, lesIdx);
+      lessonContainer.appendChild(lesEl);
+    });
+
+    modEl.querySelector('.module-nav-item').onclick = () => {
+      const container = lessonContainer;
+      container.style.display = container.style.display === 'none' ? 'block' : 'none';
+    };
+  });
+
+  function loadLesson(modIdx, lesIdx) {
+    const lesson = curriculum.modules[modIdx].lessons[lesIdx];
+    currentLesson = { modIdx, lesIdx, lesson };
+
+    // Update breadcrumb
+    document.getElementById('breadcrumb').textContent = `Module ${String(modIdx).padStart(2, '0')} › ${lesson.title}`;
+    document.getElementById('progress').textContent = `${Math.round(((modIdx * 5) + lesIdx) / 65 * 100)}%`;
+
+    // Update active states
+    document.querySelectorAll('.lesson-nav-item').forEach(el => el.classList.remove('active'));
+    document.querySelector(`[data-lesson="${modIdx}-${lesIdx}"]`)?.classList.add('active');
+
+    // Render lesson
+    const panel = document.getElementById('lessonPanel');
+    panel.innerHTML = `
+      <h1 class="lesson-title">${lesson.title}</h1>
+      <div class="lesson-meta">
+        <span class="lesson-meta-badge">Module ${String(modIdx).padStart(2, '0')}</span>
+        <span class="lesson-meta-badge">Lesson ${String(lesIdx + 1).padStart(2, '0')}</span>
+        <span class="lesson-meta-badge">${lesson.duration || '15 min'}</span>
+      </div>
+      <div class="lesson-body">${lesson.content}</div>
+      <div class="drill-buttons">
+        <button class="btn-drill" onclick="alert('Drill started: ' + currentLesson.lesson.title)">▶ Start Drill</button>
+        <button class="btn-drill btn-next" onclick="loadLesson(${modIdx}, ${lesIdx < 4 ? lesIdx + 1 : lesIdx})">Next Lesson →</button>
+      </div>
+    `;
+  }
+
+  // Load first lesson on page load
+  loadLesson(0, 0);
+</script>
+
+</body>
+</html>
